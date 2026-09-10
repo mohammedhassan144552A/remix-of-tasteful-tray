@@ -1,0 +1,197 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * نظام التصميم — "أورورا داكن"
+ * كل الألوان بصيغة oklch وتُستخدم عبر رموز دلالية فقط.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+
+  --font-sans: var(--font-body);
+  --font-head: var(--font-heading);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-line: var(--line);
+  --color-saffron: var(--saffron);
+  --color-terracotta: var(--terracotta);
+  --color-mint: var(--mint);
+  --color-gold: var(--gold);
+  --color-soft: var(--soft);
+  --color-faint: var(--faint);
+
+  --color-chart-1: var(--saffron);
+  --color-chart-2: var(--mint);
+  --color-chart-3: var(--terracotta);
+  --color-chart-4: var(--gold);
+  --color-chart-5: var(--soft);
+
+  --color-sidebar: var(--panel);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar-primary: var(--saffron);
+  --color-sidebar-primary-foreground: var(--ink);
+  --color-sidebar-accent: var(--panel2);
+  --color-sidebar-accent-foreground: var(--foreground);
+  --color-sidebar-border: var(--line);
+  --color-sidebar-ring: var(--ring);
+}
+
+:root {
+  --radius: 1rem;
+  --font-heading: "Cairo", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "Cairo", system-ui, sans-serif;
+
+  --ink: oklch(0.145 0.008 260);
+  --panel: oklch(0.196 0.011 262);
+  --panel2: oklch(0.229 0.013 262);
+  --line: oklch(1 0 0 / 8%);
+  --saffron: oklch(0.783 0.143 68);
+  --terracotta: oklch(0.564 0.128 36);
+  --mint: oklch(0.716 0.077 165);
+  --gold: oklch(0.822 0.117 90);
+  --soft: oklch(0.744 0.011 264);
+  --faint: oklch(0.567 0.012 264);
+
+  --background: var(--ink);
+  --foreground: oklch(1 0 0);
+  --card: var(--panel);
+  --card-foreground: oklch(1 0 0);
+  --popover: var(--panel);
+  --popover-foreground: oklch(1 0 0);
+  --primary: var(--saffron);
+  --primary-foreground: var(--ink);
+  --secondary: var(--panel2);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: var(--panel2);
+  --muted-foreground: var(--faint);
+  --accent: var(--panel2);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.62 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: var(--line);
+  --input: oklch(1 0 0 / 12%);
+  --ring: var(--saffron);
+
+  --gradient-warm: linear-gradient(to left, var(--saffron), var(--terracotta));
+  --shadow-panel: 0 24px 60px -24px oklch(0 0 0 / 70%);
+}
+
+:root.light {
+  --ink: oklch(0.975 0.006 85);
+  --panel: oklch(1 0 0);
+  --panel2: oklch(0.94 0.012 82);
+  --line: oklch(0.28 0.02 55 / 14%);
+  --saffron: oklch(0.64 0.16 62);
+  --terracotta: oklch(0.52 0.15 35);
+  --mint: oklch(0.53 0.09 165);
+  --gold: oklch(0.66 0.14 88);
+  --soft: oklch(0.34 0.02 55);
+  --faint: oklch(0.48 0.018 55);
+  --foreground: oklch(0.19 0.015 55);
+  --card-foreground: var(--foreground);
+  --popover-foreground: var(--foreground);
+  --secondary-foreground: var(--foreground);
+  --accent-foreground: var(--foreground);
+  --input: oklch(0.28 0.02 55 / 16%);
+  --shadow-panel: 0 20px 50px -28px oklch(0.32 0.04 55 / 30%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--saffron);
+    outline-offset: 2px;
+  }
+}
+
+@utility gradient-warm {
+  background-image: var(--gradient-warm);
+}
+
+@keyframes aurora {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-5%, 4%, 0) scale(1.18);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  [style*="aurora"] {
+    animation: none !important;
+  }
+}
